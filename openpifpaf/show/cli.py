@@ -11,8 +11,8 @@ def cli(parser):
     group = parser.add_argument_group('show')
     group.add_argument('--save-all', nargs='?', default=None, const='all-images/',
                        help='every plot is saved (optional to specify directory)')
-    assert not Canvas.show
-    assert not AnimationFrame.show
+    # assert not Canvas.show
+    # assert not AnimationFrame.show
     group.add_argument('--show', default=False, action='store_true',
                        help='show every plot, i.e., call matplotlib show()')
     group.add_argument('--image-width', default=None, type=float,

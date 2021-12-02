@@ -5,7 +5,7 @@
     "distutils": {
         "depends": [],
         "include_dirs": [
-            "/tmp/pip-build-env-5lhj34mr/overlay/lib/python3.7/site-packages/numpy/core/include"
+            "/tmp/pip-build-env-i7k7x0mu/overlay/lib/python3.9/site-packages/numpy/core/include"
         ],
         "name": "openpifpaf.functional",
         "sources": [

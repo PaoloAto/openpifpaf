@@ -47,7 +47,7 @@ class CifGenerator():
         self.s_offset = (config.side_length - 1.0) / 2.0
 
     def __call__(self, image, anns, meta):
-        # LOG.info(image.shape)
+        LOG.info(image.shape)
         # LOG.info(anns)
         # LOG.info(meta)
         # meta is the meta info of the image retrieved from the dataloader
