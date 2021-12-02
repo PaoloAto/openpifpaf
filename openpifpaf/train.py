@@ -197,9 +197,14 @@ def main():
             'hostname': socket.gethostname(),
         },
     )
+
+    torch.save(net.state_dict(), "test.pth")
+    torch.save(net, "model.pth")
     # breakpoint()
     trainer.loop(train_loader, val_loader, start_epoch=start_epoch)
 
 
 if __name__ == '__main__':
+    # import sys
+    # print(sys.argv)
     main()

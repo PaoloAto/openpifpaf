@@ -143,6 +143,7 @@ class CompositeField3(HeadNetwork):
                                     kernel_size, padding=padding, dilation=dilation)
 
         LOG.info('Out Features: %s , conv: %s ', out_features,self.conv)
+
         
         # upsample
         assert meta.upsample_stride >= 1
@@ -206,6 +207,9 @@ class CompositeField3(HeadNetwork):
         )
 
         # LOG.info(f'heads forward: {x.shape}')
+
+        from .. import surgery
+        surgery.save_tensor(x, str(x.size(1)))
 
         # breakpoint()
 

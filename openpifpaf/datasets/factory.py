@@ -17,14 +17,14 @@ def factory(dataset):
 
 def cli(parser):
     group = parser.add_argument_group('generic data module parameters')
-    # , default = 'cocokp'
-    group.add_argument('--dataset')
+    # 
+    group.add_argument('--dataset', default = 'cocokp')
     group.add_argument('--loader-workers',
                        default=None, type=int,
                        help='number of workers for data loading')
     # default=DataModule.batch_size
     group.add_argument('--batch-size',
-                       default=DataModule.batch_size, type=int,
+                       default=1, type=int,
                        help='batch size')
     group.add_argument('--dataset-weights', default=None, nargs='+', type=float,
                        help='n-1 weights for the datasets')

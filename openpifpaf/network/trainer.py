@@ -67,7 +67,7 @@ class Trainer():
     @classmethod
     def cli(cls, parser: argparse.ArgumentParser):
         group = parser.add_argument_group('trainer')
-        group.add_argument('--epochs', type=int, default=2,
+        group.add_argument('--epochs', type=int, default=1,
                            help='number of epochs to train')
         group.add_argument('--train-batches', default=None, type=int,
                            help='number of train batches')

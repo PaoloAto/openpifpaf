@@ -124,6 +124,7 @@ class Factory(Configurable):
         group = parser.add_argument_group('network configuration')
         available_checkpoints = [n for n, url in CHECKPOINT_URLS.items()
                                  if url is not PRETRAINED_UNAVAILABLE]
+        # cls.checkpoint
         group.add_argument(
             '--checkpoint', default=cls.checkpoint,
             help=(
@@ -132,6 +133,7 @@ class Factory(Configurable):
                 ''.format(available_checkpoints)
             )
         )
+        # 
         group.add_argument('--basenet', default=cls.base_name,
                            help='base network, one of {}'.format(list(BASE_FACTORIES.keys())))
         group.add_argument('--cross-talk', default=cls.cross_talk, type=float,
