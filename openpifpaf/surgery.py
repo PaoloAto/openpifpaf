@@ -12,11 +12,11 @@ state["cachedir"] = "cache_pifpaf_results"
 
 
 def set_current_path(path):
-    # print("SURGERY: Setting current path to ", path)
+    print("SURGERY: Setting current path to", path)
     state["current"] = path
 
 def set_var(name, value):
-    # print(f"SURGERY: Setting value {name}={value}")
+    print(f"SURGERY: Setting value {name}={value}")
     state[name] = value
 
 
@@ -31,15 +31,17 @@ def save_tensor(tensor, subdir="cif"):
     dirpath = p.join(state["cachedir"], subdir)
     os.makedirs(dirpath, exist_ok=True)
 
-    split_folder = path.split('/')
-    split_type = split_folder[1].split('.')
+    from os.path import basename, splitext
+
+    basepath = basename(path)
+    filename, ext = splitext(basepath)
 
     if isinstance(tensor, torch.Tensor):
-        filepath = p.join(dirpath, split_type[0] + ".pt")
+        filepath = p.join(dirpath, filename + ".pt")
         print("SURGERY: Saving tensor to", tensor.size(), "to path", filepath)
         torch.save(tensor.cpu(), filepath)
     elif isinstance(tensor, np.ndarray):
-        filepath = p.join(dirpath, split_type[0] + ".npy")
+        filepath = p.join(dirpath, filename + ".npy")
         print("SURGERY: Saving tensor of size", tensor.shape, "to path", filepath)
         np.save(filepath, tensor)
     else:
