@@ -1,8 +1,7 @@
+include openpifpaf/functional.pyx
+include openpifpaf/functional.c
 include versioneer.py
-exclude src/openpifpaf/_cpp.so
-exclude src/openpifpaf/functional*
-recursive-include src/openpifpaf/csrc *
-include src/openpifpaf/_version.py
+include openpifpaf/_version.py
 include pyproject.toml
 include LICENSE
-recursive-include docs LICENSE*
+include docs/LICENSE.AGPL

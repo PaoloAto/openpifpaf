@@ -68,7 +68,7 @@ def test_onnxruntime(tmpdir, test_batch_dim):
     # pytorch prediction
     dummy_input = torch.randn(test_batch_dim, 3, 97, 129, dtype=torch.float32)
     model.eval()
-    with torch.inference_mode():
+    with torch.no_grad():
         pred_pytorch = model(dummy_input)
 
     # onnxruntime prediction

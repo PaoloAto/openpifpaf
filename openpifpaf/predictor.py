@@ -121,7 +121,14 @@ class Predictor:
             if self.visualize_processed_image:
                 visualizer.Base.processed_image(processed_image_batch[0])
 
+
+
+            from . import surgery
+            surgery.set_current_path(meta_batch[0]['file_name'])
+            assert len(meta_batch) == 1
+            
             pred_batch = self.processor.batch(self.model, processed_image_batch, device=self.device)
+
             self.last_decoder_time = self.processor.last_decoder_time
             self.last_nn_time = self.processor.last_nn_time
             self.total_decoder_time += self.processor.last_decoder_time
@@ -132,6 +139,7 @@ class Predictor:
             for image, pred, gt_anns, meta in \
                     zip(image_batch, pred_batch, gt_anns_batch, meta_batch):
                 LOG.info('batch %d: %s', batch_i, meta.get('file_name', 'no-file-name'))
+
 
                 # load the original image if necessary
                 if self.visualize_image:

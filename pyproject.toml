@@ -1,15 +1,11 @@
 [build-system]
 build-backend = "setuptools.build_meta"
-requires = [
-    "setuptools",
-    "torch>=1.7.1",
-    "wheel",
-]
+requires = ["cython!=0.29.23", "numpy", "setuptools", "wheel"]
 
 [tool.pytest.ini_options]
 minversion = "6.0"
 addopts = "--nbval-lax --current-env --doctest-modules"
-testpaths = ["tests", "src/openpifpaf"]
+testpaths = ["tests", "openpifpaf"]
 markers = ["slow: marks tests as slow (deselect with '-m \"not slow\"')"]
 
 [tool.pylint.BASIC]
@@ -27,8 +23,8 @@ ignore-docstrings = "yes"  # Ignore docstrings when computing similarities.
 ignore-imports = "yes"  # Ignore imports when computing similarities.
 
 [tool.pylint.TYPECHECK]
-generated-members = ["numpy.*", "torch.*", "cv2.*"]
-ignored-modules = ["pycocotools"]
+generated-members = ["numpy.*", "torch.*", "cv2.*", "openpifpaf.functional.*"]
+ignored-modules = ["openpifpaf.functional", "pycocotools"]
 disable = [
     "consider-iterating-dictionary",
     "consider-using-dict-items",

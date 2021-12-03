@@ -10,6 +10,11 @@ from ... import visualizer
 LOG = logging.getLogger(__name__)
 
 
+from ... import surgery
+
+surgery.state["iter"] = 0
+surgery.state["loop"] = surgery.state["current"]
+
 class CifHr:
     neighbors = 16
     v_threshold = 0.1
@@ -34,7 +39,7 @@ class CifHr:
         sigma = np.maximum(1.0, 0.5 * scale * stride)
 
 
-        LOG.info(f't = {t.shape}, x = {x.shape}, y = {y.shape}, v = {v.shape}, sigma = {sigma.shape}')
+        # LOG.info(f't = {t.shape}, x = {x.shape}, y = {y.shape}, v = {v.shape}, sigma = {sigma.shape}')
 
         # Occupancy covers 2sigma.
         # Restrict this accumulation to 1sigma so that seeds for the same joint
@@ -42,11 +47,22 @@ class CifHr:
         scalar_square_add_gauss_with_max(
             t, x, y, sigma, v / self.neighbors / len_cifs, truncate=1.0)
 
+        if surgery.state["current"] != surgery.state["loop"]:
+            surgery.state["iter"] = 0
+            surgery.state["loop"] = surgery.state["current"]
+
+        current_idx = surgery.state["iter"]
+        print(f"SURGERY: curr_idx: {current_idx}")
+
+        # np.save(surgery.resolve())
+        surgery.save_tensor(t, f"field_{current_idx}")  
+        surgery.state["iter"] += 1
+
     def fill(self, all_fields, metas):
         start = time.perf_counter()
 
-        LOG.info(len(all_fields))
-        LOG.info(metas)
+        # LOG.info(len(all_fields))
+        # LOG.info(metas)
 
         if self.accumulated is None:
             field_shape = all_fields[metas[0].head_index].shape

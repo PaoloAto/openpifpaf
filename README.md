@@ -92,8 +92,7 @@ python -m openpifpaf.predict guide/images tappo_loomo.jpg \
 
 # Commercial License
 
-The open source license is in the [LICENSE](https://github.com/openpifpaf/openpifpaf/blob/main/LICENSE) file.
-This software is also available for licensing via the EPFL Technology Transfer
+This software is available for licensing via the EPFL Technology Transfer
 Office (https://tto.epfl.ch/, info.tto@epfl.ch).
 
 

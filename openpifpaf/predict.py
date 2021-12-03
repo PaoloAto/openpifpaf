@@ -104,9 +104,9 @@ def main():
         visualize_image=(args.show or args.image_output is not None),
         visualize_processed_image=args.debug,
     )
+
+
     for pred, _, meta in predictor.images(args.images):
-        from . import surgery
-        surgery.set_current_path(meta['file_name'])
             
         # json output
         if args.json_output is not None:
@@ -122,7 +122,7 @@ def main():
             ext = show.Canvas.out_file_extension
             image_out_name = out_name(
                 args.image_output, meta['file_name'], '.predictions.' + ext)
-            LOG.debug('image output = %s', image_out_name)
+            LOG.info('image output = %s', image_out_name)
             image = visualizer.Base._image  # pylint: disable=protected-access
             with show.image_canvas(image, image_out_name) as ax:
                 annotation_painter.annotations(ax, pred)

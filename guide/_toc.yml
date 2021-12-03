@@ -8,7 +8,6 @@ parts:
 - caption: Chapters
   chapters:
   - file: predict_api
-  - file: compute
   - file: models
   - file: datasets
   - file: train
@@ -22,7 +21,6 @@ parts:
   - file: plugins_wholebody
   - file: plugins_apollocar3d
   - file: plugins_crowdpose
-  - file: plugins_nuscenes
   - file: tutorial_opencv
   - file: plugins_cifar10
 - caption: Reference
