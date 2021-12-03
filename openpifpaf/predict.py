@@ -105,9 +105,7 @@ def main():
         visualize_processed_image=args.debug,
     )
 
-
     for pred, _, meta in predictor.images(args.images):
-            
         # json output
         if args.json_output is not None:
             json_out_name = out_name(
@@ -115,7 +113,6 @@ def main():
             LOG.debug('json output = %s', json_out_name)
             with open(json_out_name, 'w') as f:
                 json.dump([ann.json_data() for ann in pred], f)
-
 
         # image output
         if args.show or args.image_output is not None:
@@ -126,7 +123,6 @@ def main():
             image = visualizer.Base._image  # pylint: disable=protected-access
             with show.image_canvas(image, image_out_name) as ax:
                 annotation_painter.annotations(ax, pred)
-
 
 if __name__ == '__main__':
     main()

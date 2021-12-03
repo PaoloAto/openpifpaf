@@ -52,7 +52,6 @@ class CifHr:
             surgery.state["loop"] = surgery.state["current"]
 
         current_idx = surgery.state["iter"]
-        print(f"SURGERY: curr_idx: {current_idx}")
 
         # np.save(surgery.resolve())
         surgery.save_tensor(t, f"field_{current_idx}")  

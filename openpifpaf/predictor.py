@@ -121,8 +121,6 @@ class Predictor:
             if self.visualize_processed_image:
                 visualizer.Base.processed_image(processed_image_batch[0])
 
-
-
             from . import surgery
             surgery.set_current_path(meta_batch[0]['file_name'])
             assert len(meta_batch) == 1

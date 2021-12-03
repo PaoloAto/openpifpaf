@@ -53,7 +53,7 @@ class Cif(Base):
 
     def _confidences(self, confidences):
         for f in self.indices('confidence'):
-            LOG.info('%s', self.meta.keypoints[f])
+            LOG.debug('%s', self.meta.keypoints[f])
 
             with self.image_canvas(self._processed_image, margin=[0.0, 0.01, 0.05, 0.01]) as ax:
                 im = ax.imshow(self.scale_scalar(confidences[f], self.meta.stride),
